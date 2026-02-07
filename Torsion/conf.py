@@ -61,7 +61,7 @@ class Conf3:
         phi_u = self.G.w0() * uw0.inverse() * GenSympGroup(U) * self.G.w0().inverse()
         return (phip_u, uw0, phi_u)
 
-    def alpha(self, i, j):
+    def alpha_op(self, i, j):
         h = self.h()
         hp = self.hp()
         G = self.G
@@ -72,21 +72,21 @@ class Conf3:
         if (i, j) == (0, 1):
             return hp.inverse() * G.w0()
         if (i, j) == (1, 0):
-            return self.alpha(j, i).inverse() * (G.w0() ** 2)
+            return self.alpha_op(j, i).inverse() * (G.w0() ** 2)
         if (i, j) == (1, 2):
             return hp_star.inverse() * uw0.inverse() * h.inverse() * G.w0()
         if (i, j) == (2, 1):
-            return self.alpha(j, i).inverse() * (G.w0() ** 2)
+            return self.alpha_op(j, i).inverse() * (G.w0() ** 2)
         if (i, j) == (2, 0):
             return G.w0() * h
         if (i, j) == (0, 2):
             return h.inverse() * G.w0()
         raise ValueError("invalid (i,j)")
 
-    def alpha_op(self, i, j):
-        return self.alpha(i, j).inverse()
+    def alpha(self, i, j):
+        return self.alpha_op(i, j).inverse()
 
-    def beta(self, v):
+    def beta_op(self, v):
         h = self.h()
         hp = self.hp()
         G = self.G
@@ -102,8 +102,8 @@ class Conf3:
             return G.w0().inverse() * h * phip_u.inverse() * h.inverse() * G.w0()
         raise ValueError("invalid v")
 
-    def beta_op(self, v):
-        return self.beta(v).inverse()
+    def beta(self, v):
+        return self.beta_op(v).inverse()
 
 
 class Conf4:
@@ -288,9 +288,3 @@ class Conf4:
             return T123.beta(0).inverse()
 
         raise ValueError("invalid (v,i,j)")
-
-    def alpha_op(self, i, j):
-        return self.alpha(i, j).inverse()
-
-    def beta_op(self, v, i, j):
-        return self.beta(v, i, j).inverse()
