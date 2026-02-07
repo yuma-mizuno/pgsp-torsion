@@ -7526,7 +7526,7 @@ a.anchor-link {
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">conf</span> <span class="kn">import</span> <span class="n">Conf4</span>
 <span class="kn">from</span> <span class="nn">gensymp</span> <span class="kn">import</span> <span class="n">GenSympGroup</span><span class="p">,</span> <span class="n">GenSympLie</span>
-<span class="kn">from</span> <span class="nn">torsion_complex_copy</span> <span class="kn">import</span> <span class="n">TorsionComplexBuilder</span>
+<span class="kn">from</span> <span class="nn">torsion_complex</span> <span class="kn">import</span> <span class="n">TorsionComplexBuilder</span>
 </pre></div>
 </div>
 </div>
@@ -8260,7 +8260,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [21]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">d2_matrix</span> <span class="o">*</span> <span class="n">d3_matrix</span><span class="p">)</span><span class="o">.</span><span class="n">is_zero</span><span class="p">()</span>
@@ -8274,7 +8274,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle \mathrm{True}\)</html>
 </div>
@@ -8286,7 +8286,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [22]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">d0_matrix</span> <span class="o">=</span> <span class="n">zero_matrix</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">base_ring</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">cell0_index</span><span class="p">))</span>
@@ -8300,7 +8300,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [23]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">cpx</span> <span class="o">=</span> <span class="n">ChainComplex</span><span class="p">({</span><span class="mi">3</span> <span class="p">:</span> <span class="n">d3_matrix</span><span class="p">,</span> <span class="mi">2</span> <span class="p">:</span> <span class="n">d2_matrix</span><span class="p">,</span> <span class="mi">1</span> <span class="p">:</span> <span class="n">d1_matrix</span><span class="p">,</span> <span class="mi">0</span> <span class="p">:</span> <span class="n">d0_matrix</span><span class="p">},</span> <span class="n">base_ring</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">base_ring</span><span class="p">,</span> <span class="n">degree_of_differential</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
@@ -8314,7 +8314,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [24]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="p">[(</span><span class="n">x</span><span class="p">,</span> <span class="n">cpx</span><span class="o">.</span><span class="n">homology</span><span class="p">()[</span><span class="n">x</span><span class="p">]</span><span class="o">.</span><span class="n">dimension</span><span class="p">())</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">cpx</span><span class="o">.</span><span class="n">homology</span><span class="p">()]</span>
@@ -8328,7 +8328,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[24]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle \left[\left(0, 0\right), \left(1, 2\right), \left(2, 2\right), \left(3, 0\right)\right]\)</html>
 </div>
@@ -8340,7 +8340,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [25]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">l</span> <span class="o">=</span> <span class="n">tet0</span><span class="o">.</span><span class="n">beta_op</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">tet0</span><span class="o">.</span><span class="n">beta_op</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">tet0</span><span class="o">.</span><span class="n">beta_op</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span> <span class="o">*</span> <span class="n">tet0</span><span class="o">.</span><span class="n">beta_op</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -8355,7 +8355,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">m</span>
@@ -8369,7 +8369,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[30]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[26]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle \left(\left(\begin{array}{rrrr}
 1 &amp; \frac{1}{16} \omega^{5} + \frac{7}{16} \omega^{3} - \frac{5}{8} \omega^{2} - \frac{5}{8} \omega - \frac{3}{2} &amp; -\frac{1}{32} \omega^{5} + \frac{1}{16} \omega^{4} + \frac{3}{32} \omega^{3} + \frac{1}{16} \omega^{2} - \frac{1}{16} \omega - \frac{3}{4} &amp; -\frac{1}{4} \omega^{5} - \frac{3}{8} \omega^{4} - \frac{3}{4} \omega^{3} - \frac{5}{8} \omega^{2} - \frac{1}{4} \omega - \frac{1}{4} \\
@@ -8386,7 +8386,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">l</span>
@@ -8400,7 +8400,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[31]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[27]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle \left(\left(\begin{array}{rrrr}
 1 &amp; \frac{3}{2} \omega^{5} - \frac{3}{2} \omega^{4} + 3 \omega^{3} - 8 \omega^{2} + 4 \omega - 10 &amp; \frac{15}{8} \omega^{5} + \frac{1}{4} \omega^{4} + \frac{35}{8} \omega^{3} - \frac{31}{4} \omega^{2} + \frac{7}{4} \omega - 11 &amp; -\frac{41}{4} \omega^{5} + \frac{13}{4} \omega^{4} - \frac{71}{4} \omega^{3} + \frac{209}{4} \omega^{2} - 7 \omega + \frac{155}{2} \\
@@ -8417,7 +8417,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">m</span> <span class="o">*</span> <span class="n">l</span> <span class="o">==</span> <span class="n">l</span> <span class="o">*</span> <span class="n">m</span>
@@ -8431,7 +8431,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[28]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle \mathrm{True}\)</html>
 </div>
@@ -8443,7 +8443,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">torus_gen</span> <span class="o">=</span> <span class="p">[</span><span class="n">m</span><span class="p">,</span> <span class="n">l</span><span class="p">]</span>
@@ -8457,7 +8457,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [30]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fixed</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">base_ring</span><span class="p">,</span> <span class="p">[[</span><span class="n">G</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">Ad</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">lie_basis</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">-</span> <span class="n">G</span><span class="o">.</span><span class="n">lie_basis</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">basis_index</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">coefficient</span><span class="p">(</span><span class="n">l</span><span class="o">.</span><span class="n">Ad</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">lie_basis</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="o">-</span> <span class="n">G</span><span class="o">.</span><span class="n">lie_basis</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">j</span><span class="p">)</span> <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">basis_index</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">basis_index</span><span class="p">])</span>
@@ -8471,7 +8471,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [31]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fixed_vector</span> <span class="o">=</span> <span class="p">[]</span>
@@ -8488,7 +8488,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">fixed_vector</span>
@@ -8502,7 +8502,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[36]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[32]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle \left[\left(\left(\begin{array}{rrrr}
 0 &amp; 1 &amp; 0 &amp; 0 \\
@@ -8524,7 +8524,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">h10</span> <span class="o">=</span> <span class="n">builder</span><span class="o">.</span><span class="n">_to_vector</span><span class="p">(</span><span class="n">builder</span><span class="o">.</span><span class="n">_d_aux</span><span class="p">(</span><span class="n">fixed_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="n">G</span><span class="o">.</span><span class="n">identity</span><span class="p">()],</span> <span class="p">[(</span><span class="s1">'short'</span><span class="p">,</span> <span class="mi">1</span><span class="p">)],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]),</span> <span class="n">cell1_index</span><span class="p">)</span>
@@ -8541,7 +8541,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">d2_basis</span> <span class="o">=</span> <span class="n">block_matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">d2_matrix</span><span class="p">,</span> <span class="n">identity_matrix</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cell2_index</span><span class="p">))])</span><span class="o">.</span><span class="n">column_space</span><span class="p">()</span><span class="o">.</span><span class="n">basis</span><span class="p">()</span>
@@ -8560,7 +8560,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">d3_basis</span> <span class="o">=</span> <span class="n">block_matrix</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="n">d3_matrix</span><span class="p">,</span> <span class="n">identity_matrix</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">cell3_index</span><span class="p">))])</span><span class="o">.</span><span class="n">column_space</span><span class="p">()</span><span class="o">.</span><span class="n">basis</span><span class="p">()</span>
@@ -8579,7 +8579,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [36]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">det0</span> <span class="o">=</span> <span class="n">matrix</span><span class="p">(</span><span class="n">bd1_basis</span><span class="p">)</span>
@@ -8596,7 +8596,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [37]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">torsion</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="n">det0</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">'df'</span><span class="p">)</span> <span class="o">*</span> <span class="n">det1</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">'df'</span><span class="p">)</span> <span class="o">/</span> <span class="n">det2</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">'df'</span><span class="p">)</span> <span class="o">*</span> <span class="n">det3</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">algorithm</span><span class="o">=</span><span class="s1">'df'</span><span class="p">)</span>
@@ -8610,7 +8610,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [42]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [38]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">torsion</span>
@@ -8624,7 +8624,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[42]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[38]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle -\frac{85}{16} \omega^{5} + \frac{33}{8} \omega^{4} - \frac{217}{16} \omega^{3} + \frac{99}{8} \omega^{2} - \frac{321}{8} \omega + 11\)</html>
 </div>
@@ -8636,7 +8636,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [43]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [39]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># sign</span>
@@ -8651,7 +8651,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[43]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[39]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle 5821\)</html>
 </div>
@@ -8663,7 +8663,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [44]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [40]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">cpx</span><span class="o">.</span><span class="n">differential</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="n">cpx</span><span class="o">.</span><span class="n">differential</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mf">1..3</span><span class="p">]])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">torsion</span>
@@ -8677,7 +8677,7 @@ a.anchor-link {
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[44]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[40]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <html>\(\displaystyle \frac{85}{16} \omega^{5} - \frac{33}{8} \omega^{4} + \frac{217}{16} \omega^{3} - \frac{99}{8} \omega^{2} + \frac{321}{8} \omega - 11\)</html>
 </div>
@@ -8689,7 +8689,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [45]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [41]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="nb">sum</span><span class="p">([</span><span class="n">cpx</span><span class="o">.</span><span class="n">differential</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="n">cpx</span><span class="o">.</span><span class="n">differential</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">rank</span><span class="p">()</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="o">-</span><span class="mf">1..3</span><span class="p">]])</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">torsion</span><span class="p">)</span><span class="o">.</span><span class="n">complex_embeddings</span><span class="p">():</span>

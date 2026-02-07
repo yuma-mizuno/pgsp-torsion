@@ -1,11 +1,3 @@
-# torsion_complex.py
-#
-# Utilities to build the cellular chain complex and differentials used in
-#   4_1 torsion PGSp4 non-geom.ipynb
-#
-# The goal is to reuse the differential computation for various choices of
-# (tet0, tet1).
-#
 # Intended to be used inside a SageMath environment.
 
 from __future__ import annotations
@@ -48,15 +40,6 @@ class TorsionComplexBuilder:
         self.tet0 = tet0
         self.tet1 = tet1
         self.G = G if G is not None else tet0.T012.G
-
-        # frequently used element
-        self._l = (
-            tet0.beta_op(2, 1, 3)
-            * tet0.beta_op(3, 2, 1)
-            * tet0.beta_op(1, 2, 0)
-            * tet0.beta_op(0, 1, 2)
-        )
-
         self.indices = self._build_indices()
 
     # -----------------
@@ -126,34 +109,33 @@ class TorsionComplexBuilder:
     def _d1_short(self, X, i: int) -> Dict[Hashable, Any]:
         tet0 = self.tet0
         G = self.G
-        l = self._l
 
         if i == 0:
-            return self._d_aux(X, [G.identity(), G.identity()], [0, 1], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(0, 1, 2)], [0, 1], [-1, 1])
         if i == 3:
-            return self._d_aux(X, [G.identity(), G.identity()], [1, 2], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(1, 2, 0)], [1, 2], [-1, 1])
         if i == 6:
-            return self._d_aux(X, [G.identity(), G.identity()], [2, 3], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(3, 2, 1)], [2, 3], [-1, 1])
         if i == 9:
-            return self._d_aux(X, [G.identity(), l], [3, 0], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(2, 1, 3)], [3, 0], [-1, 1])
 
         if i == 1:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), G.identity()], [0, 0], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(0, 3, 1)], [0, 0], [-1, 1])
         if i == 4:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), G.identity()], [1, 1], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(1, 3, 2)], [1, 1], [-1, 1])
         if i == 7:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), G.identity()], [2, 2], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(3, 0, 2)], [2, 2], [-1, 1])
         if i == 10:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), G.identity()], [3, 3], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(2, 0, 1)], [3, 3], [-1, 1])
 
         if i == 2:
-            return self._d_aux(X, [G.identity(), tet0.beta_op(0, 1, 3)], [1, 0], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(0, 2, 3)], [1, 0], [-1, 1])
         if i == 5:
-            return self._d_aux(X, [G.identity(), tet0.beta_op(0, 1, 3)], [2, 1], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(1, 0, 3)], [2, 1], [-1, 1])
         if i == 8:
-            return self._d_aux(X, [G.identity(), tet0.beta_op(0, 1, 3)], [3, 2], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(3, 1, 0)], [3, 2], [-1, 1])
         if i == 11:
-            return self._d_aux(X, [l, tet0.beta_op(0, 1, 3)], [0, 3], [-1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(2, 3, 0)], [0, 3], [-1, 1])
 
         raise ValueError(f"invalid short edge index i={i}")
 
@@ -166,11 +148,7 @@ class TorsionComplexBuilder:
                 X,
                 [
                     G.identity(),
-                    tet0.beta_op(0, 2, 1)
-                    * tet0.beta_op(1, 0, 2)
-                    * tet0.beta_op(3, 1, 2)
-                    * tet0.alpha_op(0, 2)
-                    * tet0.beta_op(0, 1, 2),
+                    tet0.alpha_op(1, 2)
                 ],
                 [1, 3],
                 [-1, 1],
@@ -178,7 +156,7 @@ class TorsionComplexBuilder:
         if i == 1:
             return self._d_aux(
                 X,
-                [G.identity(), tet0.beta_op(0, 2, 1) * tet0.beta_op(1, 0, 2) * tet0.alpha_op(0, 1)],
+                [G.identity(), tet0.alpha_op(0, 1)],
                 [0, 2],
                 [-1, 1],
             )
@@ -190,44 +168,39 @@ class TorsionComplexBuilder:
 
     def _d2_triangle(self, X, i: int) -> Dict[Hashable, Any]:
         tet0 = self.tet0
+        tet1 = self.tet1
         G = self.G
-        l = self._l
 
         if i == 0:
-            return self._d_aux(X, [G.identity(), G.identity(), G.identity()], [("short", 0), ("short", 2), ("short", 1)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(0, 1, 2), tet0.beta_op(0, 1, 3)], [("short", 0), ("short", 2), ("short", 1)], [1, 1, 1])
         if i == 1:
-            return self._d_aux(X, [G.identity(), G.identity(), G.identity()], [("short", 3), ("short", 5), ("short", 4)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(1, 2, 0), tet0.beta_op(1, 2, 3)], [("short", 3), ("short", 5), ("short", 4)], [1, 1, 1])
         if i == 2:
-            return self._d_aux(X, [G.identity(), G.identity(), G.identity()], [("short", 6), ("short", 8), ("short", 7)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(3, 2, 1), tet0.beta_op(3, 2, 0)], [("short", 6), ("short", 8), ("short", 7)], [1, 1, 1])
         if i == 3:
-            return self._d_aux(X, [G.identity(), G.identity(), G.identity()], [("short", 9), ("short", 11), ("short", 10)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet0.beta_op(2, 1, 3), tet0.beta_op(2, 1, 0)], [("short", 9), ("short", 11), ("short", 10)], [1, 1, 1])
         if i == 4:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), G.identity(), G.identity()], [("short", 0), ("short", 4), ("short", 2)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet1.beta_op(0, 2, 3), tet1.beta_op(0, 2, 1)], [("short", 0), ("short", 4), ("short", 2)], [1, 1, 1])
         if i == 5:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), G.identity(), G.identity()], [("short", 3), ("short", 7), ("short", 5)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet1.beta_op(2, 3, 0), tet1.beta_op(2, 3, 1)], [("short", 3), ("short", 7), ("short", 5)], [1, 1, 1])
         if i == 6:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), G.identity(), G.identity()], [("short", 6), ("short", 10), ("short", 8)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet1.beta_op(3, 1, 0), tet1.beta_op(3, 1, 2)], [("short", 6), ("short", 10), ("short", 8)], [1, 1, 1])
         if i == 7:
-            return self._d_aux(X, [tet0.beta_op(0, 1, 3), l, G.identity()], [("short", 9), ("short", 1), ("short", 11)], [1, 1, 1])
+            return self._d_aux(X, [G.identity(), tet1.beta_op(1, 0, 3), tet1.beta_op(1, 0, 2)], [("short", 9), ("short", 1), ("short", 11)], [1, 1, 1])
         raise ValueError(f"invalid triangle index i={i}")
 
     def _d2_hexagon(self, X, i: int) -> Dict[Hashable, Any]:
         tet0 = self.tet0
         G = self.G
-        l = self._l
 
         if i == 1:
             g_list = [
+                tet0.beta_op(0, 3, 2),
+                tet0.beta_op(2, 0, 3) * tet0.alpha_op(0, 2) * tet0.beta_op(0, 3, 2),
                 G.identity(),
-                tet0.beta_op(2, 0, 3) * tet0.alpha_op(0, 2) * tet0.beta_op(0, 1, 2),
-                tet0.beta_op(0, 1, 3),
-                l.inverse() * tet0.beta_op(2, 0, 3) * tet0.alpha_op(0, 2) * tet0.beta_op(0, 1, 2),
-                tet0.beta_op(0, 2, 1)
-                * tet0.beta_op(1, 0, 2)
-                * tet0.beta_op(3, 0, 2)
-                * tet0.alpha_op(0, 1)
-                * tet0.beta_op(0, 1, 3),
-                G.identity(),
+                tet0.beta_op(2, 0, 3) * tet0.alpha_op(0, 2) * tet0.beta_op(0, 3, 2),
+                tet0.alpha_op(0, 3),
+                tet0.beta_op(0, 3, 2),
             ]
             e_list = [("long", 0), ("long", 1), ("long", 1), ("short", 11), ("short", 7), ("short", 2)]
             degree_list = [1, 1, -1, -1, -1, -1]
@@ -236,10 +209,10 @@ class TorsionComplexBuilder:
         if i == 3:
             g_list = [
                 G.identity(),
-                ((tet0.beta(0, 1, 2) * tet0.alpha(0, 2)) * tet0.beta(2, 0, 1) * (tet0.beta(0, 1, 2) * tet0.alpha(0, 2)).inverse()).inverse(),
-                G.identity(),
-                (tet0.alpha(0, 1) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                l.inverse() * tet0.beta_op(2, 0, 3) * tet0.alpha_op(0, 2) * tet0.beta_op(0, 1, 2),
+                tet0.beta_op(1, 0, 2) * tet0.alpha_op(0, 1),
+                tet0.beta_op(0, 1, 2),
+                tet0.beta_op(1, 0, 2) * tet0.alpha_op(0, 1),
+                tet0.alpha_op(0, 2) * tet0.beta_op(0, 1, 2),
                 G.identity(),
             ]
             e_list = [("long", 1), ("long", 0), ("long", 0), ("short", 3), ("short", 10), ("short", 0)]
@@ -248,12 +221,12 @@ class TorsionComplexBuilder:
 
         if i == 0:
             g_list = [
-                ((tet0.beta(0, 1, 2) * tet0.alpha(0, 2)) * tet0.beta(2, 0, 1) * (tet0.beta(0, 1, 2) * tet0.alpha(0, 2)).inverse()).inverse(),
-                (tet0.beta(0, 1, 2) * tet0.alpha(0, 2) * tet0.beta(2, 0, 3)).inverse(),
-                (tet0.alpha(0, 1) * tet0.beta(1, 0, 3) * tet0.beta(0, 2, 1)).inverse(),
-                l.inverse() * tet0.beta_op(2, 0, 3) * tet0.alpha_op(0, 2) * tet0.beta_op(0, 1, 2),
-                (tet0.beta(0, 1, 3) * tet0.alpha(0, 1) * tet0.beta(3, 0, 2) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                (tet0.alpha(0, 1) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
+                tet0.beta_op(1, 3, 2),
+                tet0.beta_op(2, 1, 3) * tet0.alpha_op(1, 2) * tet0.beta_op(1, 3, 2),
+                G.identity(),
+                tet0.alpha_op(1, 2) * tet0.beta_op(1, 3, 2),
+                tet0.beta_op(3, 1, 2) * tet0.alpha_op(1, 3),
+                G.identity(),
             ]
             e_list = [("long", 0), ("long", 1), ("long", 0), ("short", 9), ("short", 6), ("short", 4)]
             degree_list = [1, 1, -1, 1, 1, 1]
@@ -261,12 +234,12 @@ class TorsionComplexBuilder:
 
         if i == 2:
             g_list = [
+                tet0.alpha_op(1, 0) * tet0.beta_op(1, 3, 0),
                 G.identity(),
-                (tet0.alpha(0, 1) * tet0.beta(1, 0, 3) * tet0.beta(0, 2, 1)).inverse(),
-                tet0.beta_op(0, 1, 3),
-                (tet0.alpha(0, 1) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                (tet0.beta(0, 1, 3) * tet0.alpha(0, 1) * tet0.beta(3, 0, 2) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                G.identity(),
+                tet0.beta_op(0, 1, 3) * tet0.alpha_op(1, 0) * tet0.beta_op(1, 3, 0),
+                tet0.beta_op(1, 3, 0),
+                tet0.alpha_op(1, 3),
+                tet0.beta_op(0, 1, 3) * tet0.alpha_op(1, 0) * tet0.beta_op(1, 3, 0),
             ]
             e_list = [("long", 1), ("long", 0), ("long", 1), ("short", 5), ("short", 8), ("short", 1)]
             degree_list = [1, 1, -1, 1, 1, 1]
@@ -280,35 +253,41 @@ class TorsionComplexBuilder:
 
     def _d3(self, X, i: int) -> Dict[Hashable, Any]:
         tet0 = self.tet0
+        tet1 = self.tet1
         G = self.G
-        l = self._l
 
         if i == 0:
+            g_hexagon = [
+                tet0.beta_op(1, 0, 3) * tet0.alpha_op(0, 1),
+                tet0.beta_op(0, 1, 3),
+                tet0.beta_op(1, 0, 3) * tet0.alpha_op(0, 1),
+                G.identity(),
+            ]
             g_triangle = [
                 G.identity(),
-                (tet0.alpha(0, 1) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                (tet0.beta(0, 1, 3) * tet0.alpha(0, 1) * tet0.beta(3, 0, 2) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                l.inverse() * (tet0.beta(0, 1, 2) * tet0.alpha(0, 2) * tet0.beta(2, 0, 3)).inverse(),
+                tet0.beta_op(1, 0, 2) * tet0.alpha_op(0, 1),
+                tet0.beta_op(3, 0, 2) * tet0.alpha_op(0, 3) * tet0.beta_op(0, 1, 3),
+                tet0.beta_op(2, 0, 1) * tet0.alpha_op(0, 2) * tet0.beta_op(0, 1, 2),
             ]
             return self._d_aux(
                 X,
-                [G.identity()] * 4 + g_triangle,
+                g_hexagon + g_triangle,
                 [("hexagon", k) for k in range(4)] + [("triangle", k) for k in range(4)],
                 [-1, 1, -1, 1] + [1] * 4,
             )
 
         if i == 1:
             g_hexagon = [
-                (tet0.beta(0, 1, 2) * tet0.beta(1, 3, 0) * tet0.alpha(1, 0)).inverse(),
-                tet0.beta_op(0, 3, 1),
-                (tet0.alpha(0, 1) * tet0.beta(3, 0, 2) * tet0.alpha(1, 0)).inverse(),
-                G.identity(),
+                tet1.beta_op(0, 1, 3),
+                tet1.beta_op(0, 1, 2),
+                tet1.beta_op(2, 0, 3) * tet1.alpha_op(0, 2) * tet1.beta_op(0, 1, 2),
+                tet1.beta_op(0, 1, 2),
             ]
             g_triangle = [
-                tet0.beta_op(0, 3, 1),
-                (tet0.alpha(0, 1) * tet0.beta(3, 0, 2) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                (tet0.beta(0, 1, 2) * tet0.alpha(0, 2) * tet0.beta(2, 0, 1) * tet0.beta(3, 1, 2) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
-                (tet0.beta(0, 3, 2) * tet0.alpha(0, 2) * tet0.beta(2, 0, 1) * tet0.beta(3, 1, 2) * tet0.beta(1, 0, 2) * tet0.beta(0, 2, 1)).inverse(),
+                tet1.beta_op(0, 1, 2),
+                tet1.beta_op(2, 0, 3) * tet1.alpha_op(0, 2) * tet1.beta_op(0, 1, 2),
+                tet1.beta_op(3, 0, 1) * tet1.alpha_op(0, 3) * tet1.beta_op(0, 1, 3),
+                tet1.alpha_op(0, 1),
             ]
             return self._d_aux(
                 X,
