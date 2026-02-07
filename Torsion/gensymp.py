@@ -136,7 +136,7 @@ class GenSympGroup:
     def _latex_(self):
         from sage.misc.latex import latex
 
-        return r"\left(%s,\\ %s\right)" % (latex(self._matrix), latex(self._similitude))
+        return r"\left(%s, %s\right)" % (latex(self._matrix), latex(self._similitude))
 
     # --------------------------
     # Group law on GSp
@@ -347,7 +347,7 @@ class GenSympLie:
     def _latex_(self):
         from sage.misc.latex import latex
 
-        return r"\left(%s,\\ %s\right)" % (latex(self.X), latex(self.ell))
+        return r"\left(%s, %s\right)" % (latex(self.X), latex(self.ell))
 
     def __add__(self, other):
         if not isinstance(other, GenSympLie):
