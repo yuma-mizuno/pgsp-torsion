@@ -30,10 +30,6 @@ class TorsionComplexBuilder:
     G:
         A GenSympGroups instance. If omitted, we take tet0.T012.G.
 
-    Notes
-    -----
-    This class is a relatively direct extraction of notebook code. The intent is
-    to keep it easy to compare while allowing re-use for other (tet0, tet1).
     """
 
     def __init__(self, tet0, tet1, G=None):
@@ -333,7 +329,7 @@ class TorsionComplexBuilder:
         raise ValueError(f"invalid dim={dim}")
 
     def differential_matrices(self):
-        """Return (d1, d2, d3) as Sage matrices, transposed as in the notebook."""
+        """Return (d1, d2, d3) as Sage matrices."""
         ind = self.indices
         d1 = matrix([self.differential(1, i) for i in ind.cell1_index]).transpose()
         d2 = matrix([self.differential(2, i) for i in ind.cell2_index]).transpose()

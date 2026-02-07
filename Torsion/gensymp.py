@@ -1,8 +1,3 @@
-# gensymp.py
-#
-# Core classes extracted from the notebook:
-#   Ysystem/4_1 torsion PGSp4 non-geom.ipynb
-#
 # These classes are intended to be used inside a SageMath environment.
 
 from sage.all import (

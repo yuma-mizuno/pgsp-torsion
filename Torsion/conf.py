@@ -1,8 +1,3 @@
-# conf.py
-#
-# Extracted from:
-#   Ysystem/4_1 torsion PGSp4 non-geom.ipynb
-#
 # Intended to be used inside a SageMath environment.
 
 from sage.all import QQ, LaurentPolynomialRing, MatrixSpace, diagonal_matrix
